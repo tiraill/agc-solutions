@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}
+    Admin Page
+{% endblock %}
+{% block app_content %}
+    {% if current_user.is_admin %}
+    <h2>you Admin</h2>
+    {% else %}
+    <h2>you NO Admin</h2>
+    {% endif %}
+{% endblock %}
