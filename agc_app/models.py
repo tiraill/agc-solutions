@@ -75,12 +75,16 @@ if Config.CLEAR_DATABASE:
 
 
 if Config.CREATE_ADMIN:
-    admin = User(
-        firstname='admin',
-        lastname='admin',
-        email=Config.ADMIN_MAIL,
-        is_admin=True
-    )
-    admin.set_password(Config.ADMIN_PASS)
-    db.session.add(admin)
+    user = User.query.filter_by(email=Config.ADMIN_MAIL).first()
+    if user:
+        user.is_admin = True
+    else:
+        admin = User(
+            firstname='admin',
+            lastname='admin',
+            email=Config.ADMIN_MAIL,
+            is_admin=True
+        )
+        admin.set_password(Config.ADMIN_PASS)
+        db.session.add(admin)
     db.session.commit()
