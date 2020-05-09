@@ -23,3 +23,7 @@ class Config(object):
     # MAIL_USE_SSL = False
     MAIL_USERNAME = os.environ.get('EMAIL_USER') or 'dev@eleven-group.ru'
     MAIL_PASSWORD = os.environ.get('EMAIL_PASS') or '9M5mUmL8GC'
+
+    FIRST_START = os.environ.get('FIRST_START') or 0
+    ADMIN_MAIL = os.environ.get('ADMIN_MAIL')
+    ADMIN_PASS = os.environ.get('ADMIN_PASS')

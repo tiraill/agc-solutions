@@ -25,15 +25,15 @@ def admin_main():
     return render_template('admin.html')
 
 
-@admin.route(f'/{Config.SECRET_KEY}/<string:email>')
-def set_admin_privilege(email: str):
-    user: User = User.query.filter_by(email=email).first()
-    if user:
-        user.is_admin = True
-        db.session.commit()
-        return 'ok'
-    else:
-        return 'user not found'
+# @admin.route(f'/{Config.SECRET_KEY}/<string:email>')
+# def set_admin_privilege(email: str):
+#     user: User = User.query.filter_by(email=email).first()
+#     if user:
+#         user.is_admin = True
+#         db.session.commit()
+#         return 'ok'
+#     else:
+#         return 'user not found'
 
 
 @admin.route('/images', methods=['GET', 'POST'])
