@@ -5,7 +5,6 @@ from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
 from flask_uploads import configure_uploads, UploadSet, IMAGES
 from flask_mail import Mail
-from agc_app.models import User
 from config import Config
 
 app = Flask(__name__)
@@ -22,22 +21,6 @@ configure_uploads(app, photos)
 
 
 db = SQLAlchemy(app)
-
-if Config.CLEAR_DATABASE:
-    db.drop_all()
-    db.create_all()
-    db.session.commit()
-
-if Config.CREATE_ADMIN:
-    admin = User(
-        firstname='admin',
-        lastname='admin',
-        email=Config.ADMIN_MAIL,
-        is_admin=True
-    )
-    admin.set_password(Config.ADMIN_PASS)
-    db.session.add(admin)
-    db.session.commit()
 
 migrate = Migrate(app, db)
 

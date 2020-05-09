@@ -3,6 +3,7 @@ from agc_app import db, login_manager, app
 from werkzeug.security import generate_password_hash, check_password_hash
 from itsdangerous import TimedJSONWebSignatureSerializer as serializer
 from flask_login import UserMixin
+from config import Config
 
 
 class User(UserMixin, db.Model):
@@ -65,3 +66,21 @@ class ImageStorage(db.Model):
     image_name = db.Column(db.String)
     static_path = db.Column(db.String)
     path = db.Column(db.String)
+
+
+if Config.CLEAR_DATABASE:
+    db.drop_all()
+    db.create_all()
+    db.session.commit()
+
+
+if Config.CREATE_ADMIN:
+    admin = User(
+        firstname='admin',
+        lastname='admin',
+        email=Config.ADMIN_MAIL,
+        is_admin=True
+    )
+    admin.set_password(Config.ADMIN_PASS)
+    db.session.add(admin)
+    db.session.commit()

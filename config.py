@@ -16,7 +16,7 @@ class Config(object):
     UPLOADED_PHOTOS_DEST = TOP_LEVEL_DIR + '/agc_app/static/img/steps/upload'
     UPLOADED_IMAGES_URL = 'http://localhost:5000/static/img/steps/upload'
 
-    MAIL_SERVER = os.environ.get('MAIL_SERVER') or 'smtp.yandex.ru'
+    MAIL_SERVER = os.environ.get('MAIL_SERVER') or 'smtp.yandex.r'
     MAIL_PORT = os.environ.get('MAIL_PORT') or 587
     MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') or 1
     MAIL_SENDER = os.environ.get('MAIL_SENDER') or 'dev@eleven-group.ru'
