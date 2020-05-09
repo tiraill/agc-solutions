@@ -23,9 +23,12 @@ configure_uploads(app, photos)
 
 db = SQLAlchemy(app)
 
-if Config.FIRST_START:
+if Config.CLEAR_DATABASE:
     db.drop_all()
     db.create_all()
+    db.session.commit()
+
+if Config.CREATE_ADMIN:
     admin = User(
         firstname='admin',
         lastname='admin',
