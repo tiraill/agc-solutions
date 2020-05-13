@@ -152,6 +152,7 @@ dmypy.json
 
 .idea/
 .DS_Store
+.env
 
 # Migrations
 migrations/

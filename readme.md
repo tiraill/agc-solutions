@@ -1,47 +1,42 @@
 ### AGC Landing Page
 
-1. склонировать репозиторий
-2. создать venv `python -m venv venv`
-3. активировать окружение `source venv/bin/activate`
-4. уснановить зависимости `pip install -r requirements.txt`
+Что такое докер - тут: https://www.docker.com/
 
-5. `export FLASK_APP=main.py`
-6. `flask db init`
-7. `flask db migrate -m "init migrate"`
-8. `flask db upgrade`
-9. чтобы запустить `flask run` 
+1. Собрать слепок образа контейнера. <br>
+Находясь в папке проекта ввести в консоли команду <br>
+``$>  docker build -t hdl_postgres_image -f Dockerfile_postgres .``
 
+2. Создать экземляр контейнера. <br>
+Находясь в папке проекта ввести в консоли команду <br>
+``$>  docker run -p 5435:5432 -d --name hdl_postgres hdl_postgres_image``
+
+3. Находясь в папке с проектом ввести команду для выполнения изначальных миграций.
+``$> python manage.py migrate``
+
+4. Создать суперпользователя
+``$> python manage.py createsuperuser``
+Можно пропускать шаг с введением E-mail просто нажав Enter.
+Логин\Пароль также может быть просто admin/admin
+
+5. Запустить проект.
+``$> python manage.py runserver``
 
 ### Переменные окружения
 
 ```
 SECRET_KEY - секретный ключ (просто любой набор символов)
-DATABASE_URI - строка подключения к базе данных
 
-MAIL_SERVER - почтовый сервер (сейчас: smtp.yandex.ru)
-MAIL_PORT - порт (по умолчанию 587)
-MAIL_USE_TLS - использование TLS (0 или 1, по умолчанию 1)
-MAIL_SENDER - адрес отправителя (сейчас: dev@eleven-group.ru )
-MAIL_USERNAME - логин пользователя  (сейчас: dev@eleven-group.ru )
-MAIL_PASSWORD - пароль (сейчас: 9M5mUmL8GCээ )
-
-CLEAR_DATABASE - флаг очистки базы данных (0 или 1, по умолчанию 0)
-CREATE_ADMIN - флаг создания админа (0 или 1, по умолчанию 0)
-ADMIN_MAIL - почта админа
-ADMIN_PASS - пароль админа
+EMAIL_SENDER
+EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD
+EMAIL_HOST
+EMAIL_PORT
+EMAIL_USE_TLS
+EMAIL_USE_SSL
 ```
 
 На сайте есть админка с возможностью загружать (изменять, удалять) фотографии
-чтобы получить права администратора, сначала нужно указать переменные окружения ADMIN_MAIL и ADMIN_PASS и 
-установить флаг CREATE_ADMIN = 1
 
-
-запуск контейнера `./agc_run.sh`
-остановка контейнера `sudo docker stop agc_con`
-удаление контейнера `sudo docker rm agc_con`
-
-Для того чтобы вставить картинку в нужное место в нужном шаге необходимо через форму 
-администратора добавить нужные изображения со следующими именами
 
 ```
 step_1_gostinnaya
