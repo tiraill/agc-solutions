@@ -1,0 +1,21 @@
+version: '3.0'
+services:
+  backend:
+    container_name: agc-solution
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: sh -c "
+      python /src/manage.py makemigrations --noinput &&
+      python /src/manage.py migrate --noinput &&
+      python /src/manage.py collectstatic --noinput &&
+      gunicorn agc_django.wsgi -b 0.0.0.0:8000 --workers 4"
+    restart: on-failure
+    volumes:
+      - .:/src
+      - /var/www/agc_staticfiles:/src/staticfiles
+      - /var/www/agc_media:/src/media
+    ports:
+      - 0.0.0.0:8116:8000
+    env_file:
+      - prod.env
