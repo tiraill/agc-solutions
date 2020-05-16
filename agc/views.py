@@ -1,8 +1,9 @@
 import logging
 from typing import Union
-from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, reverse
 from django.http import Http404
-from agc.models import EmailReceivers
+from agc.models import EmailReceivers, GlassElement, GlassElementImage
 
 from django.core.mail import EmailMessage
 from agc_django.settings import EMAIL_SENDER
@@ -12,7 +13,11 @@ log = logging.getLogger(__name__)
 
 
 def index(request):
+    glass_elements = GlassElement.objects.all()
+    possible_colors = GlassElementImage.objects.all()
     ctx = {
+        'glass_elements': glass_elements,
+        'possible_colors': possible_colors,
         'contact_form': FeedbackForm(),
         'order_form': OrderForm()
     }
@@ -21,7 +26,6 @@ def index(request):
         if form.is_valid():
             form.save()
             send_new_feedback_email(form)
-
     return render(
         request,
         template_name="index.html",
@@ -31,30 +35,44 @@ def index(request):
 
 def order(request):
     if request.method == 'POST':
-        ctx = {
-            'contact_form': FeedbackForm()
-        }
         form = OrderForm(request.POST)
         if form.is_valid():
             form.save()
-            send_new_feedback_email(form)
-            return render(request, 'index.html', context=ctx)
-        ctx.update({'order_form': OrderForm(form)})
+            send_new_feedback_email(form, order_req=True)
+            return HttpResponseRedirect(reverse('agc-index'))
+        glass_elements = GlassElement.objects.all()
+        possible_colors = GlassElementImage.objects.all()
+        ctx = {
+            'glass_elements': glass_elements,
+            'possible_colors': possible_colors,
+            'contact_form': FeedbackForm(),
+            'order_form': form,
+            'error': 'true'
+        }
         return render(request, 'index.html', context=ctx)
     raise Http404()
 
 
-def send_new_feedback_email(form: Union[FeedbackForm, OrderForm]):
+def send_new_feedback_email(form: Union[FeedbackForm, OrderForm], order_req=False):
     receivers = EmailReceivers.objects.filter(is_send_email_notifications=True)
     if receivers:
-        body = f'''Поступила новая заявка
-                Имя: {form.data['first_name']}
-                Email: {form.data['email']}
-                Телефон: {form.data['phone_number']}
+        subj = 'Новая заявка'
+        body = f'''Поступила новая заявка\n
+                Имя: {form.data['first_name']}\n
+                Email: {form.data['email']}\n
+                Телефон: {form.data['phone_number']}\n
                 '''
+        if order_req:
+            subj = 'Новый заказ'
+            body += f'''Детали заказа: \n
+                        Наименования зон: {form.data['zone_name']}\n
+                        Наименования элементов: {form.data['items']}\n
+                        Наименования цветов стёкол: {form.data['glass_color']}\n
+                        Наименования производителей стёкол: {form.data['glass_name']}\n
+                    '''
         email = EmailMessage(
             from_email=EMAIL_SENDER,
-            subject='Новая заявка',
+            subject=subj,
             body=body
         )
         email.to = [user.email for user in receivers]
