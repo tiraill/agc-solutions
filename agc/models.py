@@ -1,8 +1,6 @@
 from django.db import models
 from agc.utils import get_random_filename
 
-# Create your models here.
-
 
 class ImageStorage(models.Model):
 
@@ -32,15 +30,32 @@ class EmailReceivers(models.Model):
         return f'{self.email}'
 
 
-class FeedbackHistory(models.Model):
-    class Meta:
-        verbose_name = 'История уведомлений'
-        verbose_name_plural = 'Истории уведомлений'
+class BaseFormModel(models.Model):
 
     first_name = models.CharField(max_length=50, verbose_name="Имя")
     email = models.CharField(max_length=50, verbose_name="Email")
     phone_number = models.CharField(max_length=25, verbose_name="Телефон")
-    data_time = models.DateTimeField(auto_now_add=True, blank=True, verbose_name="Дата создания")
+    creation_date = models.DateTimeField(auto_now_add=True, blank=True,
+                                         verbose_name="Дата создания уведомления")
 
     def __str__(self):
         return f'{self.email}'
+
+
+class FeedbackHistory(BaseFormModel):
+
+    class Meta:
+        verbose_name = 'История уведомлений'
+        verbose_name_plural = 'Истории уведомлений'
+
+
+class OrderHistory(BaseFormModel):
+
+    class Meta:
+        verbose_name = 'История заказов'
+        verbose_name_plural = 'Истории заказов'
+
+    zone_name = models.CharField(max_length=500, verbose_name="Наименование зоны")
+    items = models.CharField(max_length=500, verbose_name="Элементы, которые необходимо изготовить")
+    glass_color = models.CharField(max_length=25, verbose_name="Цвет стекла")
+    glass_name = models.CharField(max_length=25, verbose_name="Наименование стекла")

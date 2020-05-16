@@ -1,35 +1,20 @@
 import logging
-from typing import List
+from typing import Union
 from django.shortcuts import render
-from agc.models import ImageStorage, FeedbackHistory, EmailReceivers
-from django.forms import ModelForm, TextInput, BooleanField, CheckboxInput
+from django.http import Http404
+from agc.models import EmailReceivers
 
 from django.core.mail import EmailMessage
 from agc_django.settings import EMAIL_SENDER
-
+from agc.forms import FeedbackForm, OrderForm
 
 log = logging.getLogger(__name__)
-# Create your views here.
-
-
-class FeedbackForm(ModelForm):
-    check = BooleanField(required=True, widget=CheckboxInput(attrs={'checked': 'checked'}))
-
-    class Meta:
-        model = FeedbackHistory
-        fields = ['first_name', 'email', 'phone_number']
-        widgets = {
-            'first_name': TextInput(attrs={'placeholder': 'Ваше имя'}),
-            'email': TextInput(attrs={'placeholder': 'Ваше email'}),
-            'phone_number': TextInput(attrs={'placeholder': 'Ваше телефон', 'class': 'phone-mask'}),
-        }
 
 
 def index(request):
-    images: List[ImageStorage] = ImageStorage.objects.all()
     ctx = {
-        'images': {image.name: image.image.url for image in images},
-        'contact_form': FeedbackForm()
+        'contact_form': FeedbackForm(),
+        'order_form': OrderForm()
     }
     if request.method == 'POST':
         form = FeedbackForm(request.POST)
@@ -44,19 +29,34 @@ def index(request):
     )
 
 
-def send_new_feedback_email(form: FeedbackForm):
-    body = f'''Поступила новая заявка
-            Имя: {form.data['first_name']}
-            Email: {form.data['email']}
-            Телефон: {form.data['phone_number']}
-            '''
-    email = EmailMessage(
-        from_email=EMAIL_SENDER,
-        subject='Новая заявка',
-        body=body
-    )
+def order(request):
+    if request.method == 'POST':
+        ctx = {
+            'contact_form': FeedbackForm()
+        }
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            form.save()
+            send_new_feedback_email(form)
+            return render(request, 'index.html', context=ctx)
+        ctx.update({'order_form': OrderForm(form)})
+        return render(request, 'index.html', context=ctx)
+    raise Http404()
+
+
+def send_new_feedback_email(form: Union[FeedbackForm, OrderForm]):
     receivers = EmailReceivers.objects.filter(is_send_email_notifications=True)
     if receivers:
+        body = f'''Поступила новая заявка
+                Имя: {form.data['first_name']}
+                Email: {form.data['email']}
+                Телефон: {form.data['phone_number']}
+                '''
+        email = EmailMessage(
+            from_email=EMAIL_SENDER,
+            subject='Новая заявка',
+            body=body
+        )
         email.to = [user.email for user in receivers]
         try:
             email.send()

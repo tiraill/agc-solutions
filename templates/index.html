@@ -1,77 +1,9 @@
+{% extends "base.html" %}
 {% load staticfiles %}
 
-<!DOCTYPE html>
-<!--[if lt IE 7]><html lang="ru" class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
-<!--[if IE 7]><html lang="ru" class="lt-ie9 lt-ie8"><![endif]-->
-<!--[if IE 8]><html lang="ru" class="lt-ie9"><![endif]-->
-<!--[if gt IE 8]><!-->
-<html lang="ru">
-<!--<![endif]-->
-<head>
-  <meta charset="utf-8" />
-  <title>AGC</title>
-  <meta name="description" content="" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"> -->
+   {% block main_body %}
+              <!-- Intro -->
 
-  <!-- Libs -->
-  <link rel="stylesheet" href="{% static 'libs/swiper/swiper.min.css' %}" />
-  <!-- Libs END -->
-
-  <link rel="stylesheet" href="{% static 'fonts/stylesheet.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/grid.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/main.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/media.css' %}" />
-
-</head>
-<body>
-  <div class="wrapper">
-    
-    <!-- Header -->
-
-    <header class="header">
-      <div class="container">
-        <div class="box fx fx-between align-center">
-          
-          <!-- Logo -->
-
-          <div class="logo">
-            <a href="index.html" class="fx"><img src="{% static 'img/logo.png' %}" alt="AGC"></a>
-          </div>
-
-          <!-- Panel -->
-
-          <div class="panel fx fx-between align-center">
-            <nav class="nav">
-              <ul class="nav__list fx">
-                <li class="nav__item"><a href="#steps" class="nav__link">Конструктор</a></li>
-                <li class="nav__item"><a href="#about" class="nav__link">О проекте</a></li>
-                <li class="nav__item"><a href="#info" class="nav__link">Достижения</a></li>
-                <li class="nav__item"><a href="#contact" class="nav__link">Контакты</a></li>
-              </ul>
-            </nav>
-            <div class="relations fx align-centers">
-              <p class="relations__item"><a href="tel:+74954116565" class="relations__link relations__tel">+7 (495) 411 65 65</a></p>
-              <p class="relations__item"><a href="mailto:info.ru@eu.agc.com" class="relations__link relations__mail">info.ru@eu.agc.com</a></p>
-            </div>
-          </div>
-
-          <!-- Navbar toggle -->
-
-          <button class="navbar-toggle">
-            <span class="icon-bar speed"></span>
-            <span class="icon-bar speed"></span>
-            <span class="icon-bar speed"></span>
-          </button>
-
-        </div>
-      </div>
-    </header>
-
-    <!-- Intro -->
-    
     <section class="intro">
       <div class="container text-center">
         <h1>Современные интерьерные <br />решения <span class="underlined">из стекла</span></h1>
@@ -92,9 +24,9 @@
       <div class="container">
         <div class="row fx">
           <div class="col-6">
-          
+
             <!-- Title -->
-            
+
             <div class="title">
               <h2 class="title__h2"><span class="underlined">Interior Solution</span> за несколько шагов позволит ознакомиться с элементами и материалами для интерьерных решений</h2>
             </div>
@@ -105,7 +37,7 @@
               <p class="start__txt">Выберите нужную комнату, затем элементы из стекла. Ознакомьтесь с доступными вариациями материала и подберите подходящий.</p>
               <div class="start__btn"><a href="#steps" class="btn">Начать</a></div>
             </div>
-          
+
           </div>
         </div>
       </div>
@@ -115,23 +47,18 @@
 
     <div class="steps" id="steps">
       <div class="box">
-        
+
         <!-- Head -->
-        
+
         <div class="steps__head">
           <div class="container fx align-end">
             <div class="number steps__wrap fx align-end">
-              <span class="number__item active">2</span>
-              <span class="number__item">/ 5</span>
+              <span class="number__item active">1</span>
+              <span class="number__item">/ 4</span>
             </div>
             <div class="indicators fx">
-              <!-- Добавить класс ready к indicators__item -->
-              <div class="indicators__item">
+              <div class="indicators__item active">
                 <p class="indicators__txt">Выбор зоны</p>
-                <span class="indicators__dots"></span>
-              </div>
-              <div class="indicators__item">
-                <p class="indicators__txt">Выбор стиля</p>
                 <span class="indicators__dots"></span>
               </div>
               <div class="indicators__item">
@@ -147,13 +74,15 @@
                 <span class="indicators__dots"></span>
               </div>
             </div>
+            <a href="#" id="next_step" class="btn">Далее</a>
           </div>
+
         </div>
 
         <!-- Body -->
 
         <div class="steps__body">
-          
+
           <!-- Item -->
 
           <div class="steps__item steps__item_1" style="display: block;">
@@ -164,39 +93,39 @@
               <div class="steps__wrap steps-nav">
                 <div class="steps-nav__box">
                   <div class="steps-nav__item">
-                    <a href="#" class="steps-nav__link">
+                    <a href="" class="steps-nav__link">
                       <span class="steps-nav__txt">Гостинная</span>
-                      <span class="steps-nav__img" style="background: url({{ images.step_1_gostinnaya }}) center/cover no-repeat;"></span>
+                      <span class="steps-nav__img" style="background: url({% static 'img/zones/min/1-min.jpg' %}) center/cover no-repeat;"></span>
                     </a>
                   </div>
                   <div class="steps-nav__item">
                     <a href="#" class="steps-nav__link">
                       <span class="steps-nav__txt">Кухня</span>
-                      <span class="steps-nav__img" style="background: url({% static images.step_1_kuhnya %}) center/cover no-repeat;"></span>
+                      <span class="steps-nav__img" style="background: url({% static 'img/zones/min/2-min.jpg' %}) center/cover no-repeat;"></span>
                     </a>
                   </div>
                   <div class="steps-nav__item">
                     <a href="#" class="steps-nav__link">
                       <span class="steps-nav__txt">Сан узел</span>
-                      <span class="steps-nav__img" style="background: url({% static images.step_1_sanyzel %}) center/cover no-repeat;"></span>
+                      <span class="steps-nav__img" style="background: url({% static 'img/zones/min/3-min.jpg' %}) center/cover no-repeat;"></span>
                     </a>
                   </div>
                   <div class="steps-nav__item">
                     <a href="#" class="steps-nav__link">
                       <span class="steps-nav__txt">Спальня</span>
-                      <span class="steps-nav__img" style="background: url({% static images.step_1_spalnya %}) center/cover no-repeat;"></span>
+                      <span class="steps-nav__img" style="background: url({% static 'img/zones/min/4-min.jpg' %}) center/cover no-repeat;"></span>
                     </a>
                   </div>
                   <div class="steps-nav__item">
                     <a href="#" class="steps-nav__link">
                       <span class="steps-nav__txt">Детская</span>
-                      <span class="steps-nav__img" style="background: url({% static images.step_1_detskaya %}) center/cover no-repeat;"></span>
+                      <span class="steps-nav__img" style="background: url({% static 'img/zones/min/5-min.jpg' %}) center/cover no-repeat;"></span>
                     </a>
                   </div>
                   <div class="steps-nav__item">
                     <a href="#" class="steps-nav__link">
                       <span class="steps-nav__txt">Прихожая</span>
-                      <span class="steps-nav__img" style="background: url({% static images.step_1_prihozhaya %}) center/cover no-repeat;"></span>
+                      <span class="steps-nav__img" style="background: url({% static 'img/zones/min/6-min.jpg' %}) center/cover no-repeat;"></span>
                     </a>
                   </div>
                 </div>
@@ -211,7 +140,7 @@
 
                   <div class="swiper-slide">
                     <a href="#" class="sw__link">
-                      <div class="sw-img"><img src="{{ images.step_1_gostinnaya }}" alt="Фото"></div>
+                      <div class="sw-img"><img src="{% static 'img/zones/1.jpg' %}" alt="Фото"></div>
                       <div class="sw__txt">
                         <p>Гостинная</p>
                         <span>Выбрать
@@ -227,7 +156,7 @@
 
                   <div class="swiper-slide">
                     <a href="#" class="sw__link">
-                      <div class="sw-img"><img src="{% static images.step_1_kuhnya %}" alt="Фото"></div>
+                      <div class="sw-img"><img src="{% static 'img/zones/2.jpg' %}" alt="Фото"></div>
                       <div class="sw__txt">
                         <p>Кухня</p>
                         <span>Выбрать
@@ -243,7 +172,7 @@
 
                   <div class="swiper-slide">
                     <a href="#" class="sw__link">
-                      <div class="sw-img"><img src="{% static images.step_1_sanyzel %}" alt="Фото"></div>
+                      <div class="sw-img"><img src="{% static 'img/zones/3.jpg' %}" alt="Фото"></div>
                       <div class="sw__txt">
                         <p>Сан узел</p>
                         <span>Выбрать
@@ -259,7 +188,7 @@
 
                   <div class="swiper-slide">
                     <a href="#" class="sw__link">
-                      <div class="sw-img"><img src="{% static images.step_1_spalnya %}" alt="Фото"></div>
+                      <div class="sw-img"><img src="{% static 'img/zones/4.jpg' %}" alt="Фото"></div>
                       <div class="sw__txt">
                         <p>Спальня</p>
                         <span>Выбрать
@@ -275,7 +204,7 @@
 
                   <div class="swiper-slide">
                     <a href="#" class="sw__link">
-                      <div class="sw-img"><img src="{% static images.step_1_detskaya %}" alt="Фото"></div>
+                      <div class="sw-img"><img src="{% static 'img/zones/5.jpg' %}" alt="Фото"></div>
                       <div class="sw__txt">
                         <p>Детская</p>
                         <span>Выбрать
@@ -291,7 +220,7 @@
 
                   <div class="swiper-slide">
                     <a href="#" class="sw__link">
-                      <div class="sw-img"><img src="{% static images.step_1_prihozhaya %}" alt="Фото"></div>
+                      <div class="sw-img"><img src="{% static 'img/zones/6.jpg' %}" alt="Фото"></div>
                       <div class="sw__txt">
                         <p>Прихожая</p>
                         <span>Выбрать
@@ -310,68 +239,69 @@
 
               <!-- Image -->
 
-              <div class="steps__image" id="steps1_image" style="background: url({% static 'img/steps/1.jpg' %}) center/cover no-repeat;"></div>
+              <div class="steps__image" style="background: url({% static 'img/zones/1.jpg' %}) center/cover no-repeat;"></div>
 
             </div>
           </div>
 
           <!-- Item -->
 
-          <div class="steps__item steps__item_2" style="display: none;">
+          <!-- Второй шаг (временно пропускаем) -->
+          <!--
+
+            <div class="steps__item steps__item_2" style="display: none;">
             <div class="container">
 
-              <!-- Wrap -->
+              Wrap
 
               <div class="steps__wrap steps-nav">
                 <div class="steps-nav__box">
                   <div class="steps-nav__item">
                     <a href="#" class="steps-nav__link">
                       <span class="steps-nav__txt">Скандинавский</span>
-                      <span class="steps-nav__img" style="background: url({% static images.step_2_skandinavskiy %}) center/cover no-repeat;"></span>
+                      <span class="steps-nav__img" style="background: url(img/other/steps-nav-1.png) center/cover no-repeat;"></span>
                     </a>
                   </div>
                   <div class="steps-nav__item">
                     <a href="#" class="steps-nav__link">
                       <span class="steps-nav__txt">Классика</span>
-                      <span class="steps-nav__img" style="background: url({% static images.step_2_klassika %}) center/cover no-repeat;"></span>
+                      <span class="steps-nav__img" style="background: url(img/other/steps-nav-1.png) center/cover no-repeat;"></span>
                     </a>
                   </div>
                   <div class="steps-nav__item">
                     <a href="#" class="steps-nav__link">
                       <span class="steps-nav__txt">Лофт</span>
-                      <span class="steps-nav__img" style="background: url({% static images.step_2_loft %}) center/cover no-repeat;"></span>
+                      <span class="steps-nav__img" style="background: url(img/other/steps-nav-1.png) center/cover no-repeat;"></span>
                     </a>
                   </div>
                   <div class="steps-nav__item">
                     <a href="#" class="steps-nav__link">
                       <span class="steps-nav__txt">Прованс</span>
-                      <span class="steps-nav__img" style="background: url({% static images.step_2_provans %}) center/cover no-repeat;"></span>
+                      <span class="steps-nav__img" style="background: url(img/other/steps-nav-1.png) center/cover no-repeat;"></span>
                     </a>
                   </div>
                   <div class="steps-nav__item">
                     <a href="#" class="steps-nav__link">
                       <span class="steps-nav__txt">Модерн</span>
-                      <span class="steps-nav__img" style="background: url({% static images.step_2_modern %}) center/cover no-repeat;"></span>
+                      <span class="steps-nav__img" style="background: url(img/other/steps-nav-1.png) center/cover no-repeat;"></span>
                     </a>
                   </div>
                   <div class="steps-nav__item">
                     <a href="#" class="steps-nav__link">
                       <span class="steps-nav__txt">минимализм</span>
-                      <span class="steps-nav__img" style="background: url({% static images.step_2_minimalizm %}) center/cover no-repeat;"></span>
+                      <span class="steps-nav__img" style="background: url(img/other/steps-nav-1.png) center/cover no-repeat;"></span>
                     </a>
                   </div>
                 </div>
               </div>
 
-              <!-- fdsfs -->
-
               <div class="steps__group row fx-wrap">
 
-                <!-- Item -->
+
 
                 <div class="col-6">
                   <a href="#" class="sw__link">
-                    <div class="sw-img"><img src="{% static images.step_2_skandinavskiy %}" alt="Фото"></div>
+                    <div class="sw-img"><img src="img/steps/steps-sl-1/1.jpg" alt="Фото"></div>
                     <div class="sw__txt">
                       <p>Скандинавский</p>
                       <span>Выбрать
@@ -383,11 +313,11 @@
                   </a>
                 </div>
 
-                <!-- Item -->
+
 
                 <div class="col-6">
                   <a href="#" class="sw__link">
-                    <div class="sw-img"><img src="{% static images.step_2_klassika %}" alt="Фото"></div>
+                    <div class="sw-img"><img src="img/steps/steps-sl-1/1.jpg" alt="Фото"></div>
                     <div class="sw__txt">
                       <p>Классика</p>
                       <span>Выбрать
@@ -399,11 +329,11 @@
                   </a>
                 </div>
 
-                <!-- Item -->
+
 
                 <div class="col-6">
                   <a href="#" class="sw__link">
-                    <div class="sw-img"><img src="{% static images.step_2_loft %}" alt="Фото"></div>
+                    <div class="sw-img"><img src="img/steps/steps-sl-1/1.jpg" alt="Фото"></div>
                     <div class="sw__txt">
                       <p>Лофт</p>
                       <span>Выбрать
@@ -415,11 +345,11 @@
                   </a>
                 </div>
 
-                <!-- Item -->
+
 
                 <div class="col-6">
                   <a href="#" class="sw__link">
-                    <div class="sw-img"><img src="{% static images.step_2_provans %}" alt="Фото"></div>
+                    <div class="sw-img"><img src="img/steps/steps-sl-1/1.jpg" alt="Фото"></div>
                     <div class="sw__txt">
                       <p>Прованс</p>
                       <span>Выбрать
@@ -431,11 +361,11 @@
                   </a>
                 </div>
 
-                <!-- Item -->
+
 
                 <div class="col-6">
                   <a href="#" class="sw__link">
-                    <div class="sw-img"><img src="{% static images.step_2_modern %}" alt="Фото"></div>
+                    <div class="sw-img"><img src="img/steps/steps-sl-1/1.jpg" alt="Фото"></div>
                     <div class="sw__txt">
                       <p>Модерн</p>
                       <span>Выбрать
@@ -447,11 +377,11 @@
                   </a>
                 </div>
 
-                <!-- Item -->
+
 
                 <div class="col-6">
                   <a href="#" class="sw__link">
-                    <div class="sw-img"><img src="{% static images.step_2_minimalizm %}" alt="Фото"></div>
+                    <div class="sw-img"><img src="img/steps/steps-sl-1/1.jpg" alt="Фото"></div>
                     <div class="sw__txt">
                       <p>минимализм</p>
                       <span>Выбрать
@@ -465,39 +395,75 @@
 
               </div>
 
-              <!-- Image -->
 
-              <div class="steps__image" style="background: url({% static 'img/steps/2.jpg' %}) center/cover no-repeat;"></div>
+
+              <div class="steps__image" style="background: url(img/steps/2.jpg) center/cover no-repeat;"></div>
 
             </div>
           </div>
 
-          <!-- Item -->
+           -->
+
+           <!-- Item -->
 
           <div class="steps__item steps__item_3" style="display: none;">
-            <div class="container">
+            <div class="container alt-row">
 
               <!-- Wrap -->
 
               <div class="steps__wrap steps-nav">
                 <div class="steps-list">
-                  <div class="steps-list__item"><a href="#" class="steps-list__link"><span class="steps-list__txt">Мебель (фасады и вставки)</span><i class="plus"></i></a></div>
-                  <div class="steps-list__item"><a href="#" class="steps-list__link"><span class="steps-list__txt">Стол из стекла</span><i class="plus"></i></a></div>
-                  <div class="steps-list__item"><a href="#" class="steps-list__link"><span class="steps-list__txt">Витринная мебель (сервант)</span><i class="plus"></i></a></div>
-                  <div class="steps-list__item"><a href="#" class="steps-list__link"><span class="steps-list__txt">Кухонный фартук</span><i class="plus"></i></a></div>
-                  <div class="steps-list__item"><a href="#" class="steps-list__link"><span class="steps-list__txt">Полки из стекла</span><i class="plus"></i></a></div>
-                  <div class="steps-list__item"><a href="#" class="steps-list__link"><span class="steps-list__txt">Зеркало</span><i class="plus"></i></a></div>
-                  <div class="steps-list__item"><a href="#" class="steps-list__link"><span class="steps-list__txt">Перегородки</span><i class="plus"></i></a></div>
-                  <div class="steps-list__item"><a href="#" class="steps-list__link"><span class="steps-list__txt">Двери</span><i class="plus"></i></a></div>
-                  <div class="steps-list__item"><a href="#" class="steps-list__link"><span class="steps-list__txt">Экран на батарею отопления</span><i class="plus"></i></a></div>
-                  <div class="steps-list__item"><a href="#" class="steps-list__link"><span class="steps-list__txt">Стекло на столешницу</span><i class="plus"></i></a></div>
-                  <div class="steps-list__item"><a href="#" class="steps-list__link"><span class="steps-list__txt">Маркерная доска из стекла</span><i class="plus"></i></a></div>
+                  <div class="steps-list__item"><a href="#" class="steps-list__link fasade"><span class="steps-list__txt">Мебель (фасады и вставки)</span><i class="plus"></i></a></div>
+                  <div class="steps-list__item"><a href="#" class="steps-list__link glass-table"><span class="steps-list__txt">Стол из стекла</span><i class="plus"></i></a></div>
+                  <div class="steps-list__item"><a href="#" class="steps-list__link apron"><span class="steps-list__txt">Кухонный фартук</span><i class="plus"></i></a></div>
+                  <div class="steps-list__item"><a href="#" class="steps-list__link servant"><span class="steps-list__txt">Витринная мебель (сервант)</span><i class="plus"></i></a></div>
+                  <div class="steps-list__item"><a href="#" class="steps-list__link wall"><span class="steps-list__txt">Облицовка стены</span><i class="plus"></i></a></div>
+                  <div class="steps-list__item"><a href="#" class="steps-list__link furniture"><span class="steps-list__txt">Облицовка мебели</span><i class="plus"></i></a></div>
+                  <div class="steps-list__item"><a href="#" class="steps-list__link shelf"><span class="steps-list__txt">Полки из стекла</span><i class="plus"></i></a></div>
+                  <div class="steps-list__item"><a href="#" class="steps-list__link tv"><span class="steps-list__txt">Телевизор за стеклом</span><i class="plus"></i></a></div>
+                  <div class="steps-list__item"><a href="#" class="steps-list__link closet"><span class="steps-list__txt">Шкаф-купе</span><i class="plus"></i></a></div>
+                  <div class="steps-list__item"><a href="#" class="steps-list__link mirror"><span class="steps-list__txt">Зеркало</span><i class="plus"></i></a></div>
+                  <div class="steps-list__item"><a href="#" class="steps-list__link glass-furniture"><span class="steps-list__txt">Мебель со стеклом (вставка)/комод</span><i class="plus"></i></a></div>
+                  <div class="steps-list__item"><a href="#" class="steps-list__link partitions"><span class="steps-list__txt">Перегородки</span><i class="plus"></i></a></div>
+                  <div class="steps-list__item"><a href="#" class="steps-list__link pedestal"><span class="steps-list__txt">Прикроватная тумба из стекла</span><i class="plus"></i></a></div>
+                  <div class="steps-list__item"><a href="#" class="steps-list__link doors"><span class="steps-list__txt">Двери</span><i class="plus"></i></a></div>
+                  <div class="steps-list__item"><a href="#" class="steps-list__link glass"><span class="steps-list__txt">Стекло в раме</span><i class="plus"></i></a></div>
+                  <div class="steps-list__item"><a href="#" class="steps-list__link shield"><span class="steps-list__txt">Экран на батарею отопления</span><i class="plus"></i></a></div>
+                  <div class="steps-list__item"><a href="#" class="steps-list__link glass-on-tabel"><span class="steps-list__txt">Стекло на столешницу</span><i class="plus"></i></a></div>
+                  <div class="steps-list__item"><a href="#" class="steps-list__link marker-desk"><span class="steps-list__txt">Маркерная доска из стекла</span><i class="plus"></i></a></div>
+                  <div class="steps-list__item"><a href="#" class="steps-list__link child-furniture"><span class="steps-list__txt">Детская мебель</span><i class="plus"></i></a></div>
+                  <div class="steps-list__item"><a href="#" class="steps-list__link shower-screen"><span class="steps-list__txt">Душевая перегородка</span><i class="plus"></i></a></div>
+                  <div class="steps-list__item"><a href="#" class="steps-list__link cupboard"><span class="steps-list__txt">Шкаф</span><i class="plus"></i></a></div>
+
                 </div>
               </div>
 
               <!-- Image -->
 
-              <div class="steps__image" style="background: url({% static 'img/steps/3.jpg' %}) center/cover no-repeat;"></div>
+              <div class="steps__image_3">
+                <img src="{%  static "img/steps/3.jpg"  %}}" alt="">
+                <div id="fasade" class="steps__dot fasade"> <div></div></div>
+                <div id="cupboard" class="steps__dot cupboard"> <div></div></div>
+                <div id="glass-table" class="steps__dot glass-table"> <div></div></div>
+                <div id="servant" class="steps__dot servant"> <div></div></div>
+                <div id="apron" class="steps__dot apron"> <div></div></div>
+                <div id="wall" class="steps__dot wall"> <div></div></div>
+                <div id="furniture" class="steps__dot furniture"> <div></div></div>
+                <div id="shelf" class="steps__dot shelf"> <div></div></div>
+                <div id="tv" class="steps__dot tv"> <div></div></div>
+                <div id="closet" class="steps__dot closet"> <div></div></div>
+                <div id="mirror" class="steps__dot mirror"> <div></div></div>
+                <div id="glass-furniture" class="steps__dot glass-furniture"> <div></div></div>
+                <div id="partitions" class="steps__dot partitions"> <div></div></div>
+                <div id="pedestal" class="steps__dot pedestal"> <div></div></div>
+                <div id="doors" class="steps__dot doors"> <div></div></div>
+                <div id="glass" class="steps__dot glass"> <div></div></div>
+                <div id="shield" class="steps__dot shield"> <div></div></div>
+                <div id="glass-on-tabel" class="steps__dot glass-on-tabel"> <div></div></div>
+                <div id="marker-desk" class="steps__dot marker-desk"> <div></div></div>
+                <div id="child-furniture" class="steps__dot child-furniture"> <div></div></div>
+                <div id="shower-screen" class="steps__dot shower-screen"> <div></div></div>
+              </div>
 
             </div>
           </div>
@@ -519,17 +485,9 @@
                       <div class="bloom">
                         <p class="bloom__txt">Расширение пространства</p>
                         <ul class="bloom__list fx fx-wrap">
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_lacobel_1 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_lacobel_2 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_lacobel_3 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_lacobel_4 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_lacobel_5 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_lacobel_6 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_lacobel_7 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_lacobel_8 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_lacobel_9 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_lacobel_10 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_lacobel_11 %}" alt="Цвет" title="Название цвета"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/red-min.jpg' %}" alt="Цвет" title="красный"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/green-min.jpg' %}" alt="Цвет" title="зеленый"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/blue-min.jpg' %}" alt="Цвет" title="синий"></a></li>
                         </ul>
                       </div>
                       <p class="details__link fx">
@@ -548,91 +506,15 @@
                   </li>
                   <li>
                     <div class="accordion-header">
-                      <span class="steps-list__txt">Matelac</span><i class="plus"></i>
-                    </div>
-                    <div class="accordion-body">
-                      <div class="bloom">
-                        <p class="bloom__txt">Расширение пространства</p>
-                        <ul class="bloom__list fx fx-wrap">
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_matelac_1 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_matelac_2 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_matelac_3 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_matelac_4 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_matelac_5 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_matelac_6 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_matelac_7 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_matelac_8 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_matelac_9 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_matelac_10 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_matelac_11 %}" alt="Цвет" title="Название цвета"></a></li>
-                        </ul>
-                      </div>
-                      <p class="details__link fx">
-                        <a href="#" class="fx align-center">Подробнее о материале
-                          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <path fill-rule="evenodd"
-                             d="M19.226,7.509 C19.226,7.615 19.183,7.711 19.113,7.780 C19.113,7.780 19.113,7.781 19.113,7.781 L12.201,14.687 C12.051,14.837 11.808,14.837 11.658,14.687 C11.584,14.612 11.546,14.514 11.546,14.416 C11.546,14.318 11.584,14.219 11.658,14.144 L17.915,7.893 L1.178,7.893 C0.966,7.893 0.794,7.721 0.794,7.509 C0.794,7.297 0.966,7.125 1.178,7.125 L17.915,7.125 L11.658,0.874 C11.509,0.724 11.509,0.481 11.658,0.331 C11.808,0.182 12.051,0.182 12.201,0.331 L19.112,7.237 C19.182,7.307 19.226,7.403 19.226,7.509 Z"/>
-                          </svg>
-                        </a>
-                      </p>
-                      <div class="material__text">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque necessitatibus, iste alias porro amet cum sit officia fugit eius. Eaque cumque ratione iste delectus, illum officia earum in consequuntur eveniet, voluptates, veniam eius atque tenetur fuga reprehenderit aperiam perspiciatis molestiae, qui! Neque alias atque amet pariatur facilis vero fugit architecto in itaque, consequatur quod perspiciatis, eius! Expedita ducimus quis ipsa, dolores iste, cupiditate labore doloremque animi voluptatum qui, dolor iusto ex quo sequi maxime necessitatibus ipsum repellat repellendus nobis corporis nulla officia. Impedit delectus magnam inventore deserunt asperiores blanditiis distinctio, ut, enim consectetur nam atque modi officia maiores fugiat a.</p>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="accordion-header">
-                      <span class="steps-list__txt">MNGE</span><i class="plus"></i>
-                    </div>
-                    <div class="accordion-body">
-                      <div class="bloom">
-                        <p class="bloom__txt">Расширение пространства</p>
-                        <ul class="bloom__list fx fx-wrap">
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_mnge_1 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_mnge_2 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_mnge_3 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_mnge_4 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_mnge_5 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_mnge_6 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_mnge_7 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_mnge_8 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_mnge_9 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_mnge_10 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_mnge_11 %}" alt="Цвет" title="Название цвета"></a></li>
-                        </ul>
-                      </div>
-                      <p class="details__link fx">
-                        <a href="#" class="fx align-center">Подробнее о материале
-                          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <path fill-rule="evenodd"
-                             d="M19.226,7.509 C19.226,7.615 19.183,7.711 19.113,7.780 C19.113,7.780 19.113,7.781 19.113,7.781 L12.201,14.687 C12.051,14.837 11.808,14.837 11.658,14.687 C11.584,14.612 11.546,14.514 11.546,14.416 C11.546,14.318 11.584,14.219 11.658,14.144 L17.915,7.893 L1.178,7.893 C0.966,7.893 0.794,7.721 0.794,7.509 C0.794,7.297 0.966,7.125 1.178,7.125 L17.915,7.125 L11.658,0.874 C11.509,0.724 11.509,0.481 11.658,0.331 C11.808,0.182 12.051,0.182 12.201,0.331 L19.112,7.237 C19.182,7.307 19.226,7.403 19.226,7.509 Z"/>
-                          </svg>
-                        </a>
-                      </p>
-                      <div class="material__text">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque necessitatibus, iste alias porro amet cum sit officia fugit eius. Eaque cumque ratione iste delectus, illum officia earum in consequuntur eveniet, voluptates, veniam eius atque tenetur fuga reprehenderit aperiam perspiciatis molestiae, qui! Neque alias atque amet pariatur facilis vero fugit architecto in itaque, consequatur quod perspiciatis, eius! Expedita ducimus quis ipsa, dolores iste, cupiditate labore doloremque animi voluptatum qui, dolor iusto ex quo sequi maxime necessitatibus ipsum repellat repellendus nobis corporis nulla officia. Impedit delectus magnam inventore deserunt asperiores blanditiis distinctio, ut, enim consectetur nam atque modi officia maiores fugiat a.</p>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="accordion-header">
                       <span class="steps-list__txt">Planibel</span><i class="plus"></i>
                     </div>
                     <div class="accordion-body">
                       <div class="bloom">
                         <p class="bloom__txt">Расширение пространства</p>
                         <ul class="bloom__list fx fx-wrap">
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_planibel_1 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_planibel_2 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_planibel_3 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_planibel_4 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_planibel_5 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_planibel_6 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_planibel_7 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_planibel_8 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_planibel_9 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_planibel_10 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_planibel_11 %}" alt="Цвет" title="Название цвета"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/red-min.jpg' %}" alt="Цвет" title="красный"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/green-min.jpg' %}" alt="Цвет" title="зеленый"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/blue-min.jpg' %}" alt="Цвет" title="синий"></a></li>
                         </ul>
                       </div>
                       <p class="details__link fx">
@@ -650,23 +532,15 @@
                   </li>
                   <li>
                     <div class="accordion-header">
-                      <span class="steps-list__txt">laconat</span><i class="plus"></i>
+                      <span class="steps-list__txt">Matelac</span><i class="plus"></i>
                     </div>
                     <div class="accordion-body">
                       <div class="bloom">
                         <p class="bloom__txt">Расширение пространства</p>
                         <ul class="bloom__list fx fx-wrap">
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_laconat_1 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_laconat_2 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_laconat_3 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_laconat_4 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_laconat_5 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_laconat_6 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_laconat_7 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_laconat_8 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_laconat_9 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_laconat_10 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_laconat_11 %}" alt="Цвет" title="Название цвета"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/red-min.jpg' %}" alt="Цвет" title="красный"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/green-min.jpg' %}" alt="Цвет" title="зеленый"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/blue-min.jpg' %}" alt="Цвет" title="синий"></a></li>
                         </ul>
                       </div>
                       <p class="details__link fx">
@@ -684,23 +558,171 @@
                   </li>
                   <li>
                     <div class="accordion-header">
-                      <span class="steps-list__txt">mirox</span><i class="plus"></i>
+                      <span class="steps-list__txt">Matelux</span><i class="plus"></i>
                     </div>
                     <div class="accordion-body">
                       <div class="bloom">
                         <p class="bloom__txt">Расширение пространства</p>
                         <ul class="bloom__list fx fx-wrap">
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_mirox_1 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_mirox_2 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_mirox_3 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_mirox_4 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_mirox_5 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_mirox_6 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_mirox_7 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_mirox_8 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_mirox_9 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_mirox_10 %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static images.step_4_mirox_11 %}" alt="Цвет" title="Название цвета"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/red-min.jpg' %}" alt="Цвет" title="красный"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/green-min.jpg' %}" alt="Цвет" title="зеленый"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/blue-min.jpg' %}" alt="Цвет" title="синий"></a></li>
+                        </ul>
+                      </div>
+                      <p class="details__link fx">
+                        <a href="#" class="fx align-center">Подробнее о материале
+                          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <path fill-rule="evenodd"
+                             d="M19.226,7.509 C19.226,7.615 19.183,7.711 19.113,7.780 C19.113,7.780 19.113,7.781 19.113,7.781 L12.201,14.687 C12.051,14.837 11.808,14.837 11.658,14.687 C11.584,14.612 11.546,14.514 11.546,14.416 C11.546,14.318 11.584,14.219 11.658,14.144 L17.915,7.893 L1.178,7.893 C0.966,7.893 0.794,7.721 0.794,7.509 C0.794,7.297 0.966,7.125 1.178,7.125 L17.915,7.125 L11.658,0.874 C11.509,0.724 11.509,0.481 11.658,0.331 C11.808,0.182 12.051,0.182 12.201,0.331 L19.112,7.237 C19.182,7.307 19.226,7.403 19.226,7.509 Z"/>
+                          </svg>
+                        </a>
+                      </p>
+                      <div class="material__text">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque necessitatibus, iste alias porro amet cum sit officia fugit eius. Eaque cumque ratione iste delectus, illum officia earum in consequuntur eveniet, voluptates, veniam eius atque tenetur fuga reprehenderit aperiam perspiciatis molestiae, qui! Neque alias atque amet pariatur facilis vero fugit architecto in itaque, consequatur quod perspiciatis, eius! Expedita ducimus quis ipsa, dolores iste, cupiditate labore doloremque animi voluptatum qui, dolor iusto ex quo sequi maxime necessitatibus ipsum repellat repellendus nobis corporis nulla officia. Impedit delectus magnam inventore deserunt asperiores blanditiis distinctio, ut, enim consectetur nam atque modi officia maiores fugiat a.</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="accordion-header">
+                      <span class="steps-list__txt">Mirox</span><i class="plus"></i>
+                    </div>
+                    <div class="accordion-body">
+                      <div class="bloom">
+                        <p class="bloom__txt">Расширение пространства</p>
+                        <ul class="bloom__list fx fx-wrap">
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/red-min.jpg' %}" alt="Цвет" title="красный"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/green-min.jpg' %}" alt="Цвет" title="зеленый"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/blue-min.jpg' %}" alt="Цвет" title="синий"></a></li>
+                        </ul>
+                      </div>
+                      <p class="details__link fx">
+                        <a href="#" class="fx align-center">Подробнее о материале
+                          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <path fill-rule="evenodd"
+                             d="M19.226,7.509 C19.226,7.615 19.183,7.711 19.113,7.780 C19.113,7.780 19.113,7.781 19.113,7.781 L12.201,14.687 C12.051,14.837 11.808,14.837 11.658,14.687 C11.584,14.612 11.546,14.514 11.546,14.416 C11.546,14.318 11.584,14.219 11.658,14.144 L17.915,7.893 L1.178,7.893 C0.966,7.893 0.794,7.721 0.794,7.509 C0.794,7.297 0.966,7.125 1.178,7.125 L17.915,7.125 L11.658,0.874 C11.509,0.724 11.509,0.481 11.658,0.331 C11.808,0.182 12.051,0.182 12.201,0.331 L19.112,7.237 C19.182,7.307 19.226,7.403 19.226,7.509 Z"/>
+                          </svg>
+                        </a>
+                      </p>
+                      <div class="material__text">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque necessitatibus, iste alias porro amet cum sit officia fugit eius. Eaque cumque ratione iste delectus, illum officia earum in consequuntur eveniet, voluptates, veniam eius atque tenetur fuga reprehenderit aperiam perspiciatis molestiae, qui! Neque alias atque amet pariatur facilis vero fugit architecto in itaque, consequatur quod perspiciatis, eius! Expedita ducimus quis ipsa, dolores iste, cupiditate labore doloremque animi voluptatum qui, dolor iusto ex quo sequi maxime necessitatibus ipsum repellat repellendus nobis corporis nulla officia. Impedit delectus magnam inventore deserunt asperiores blanditiis distinctio, ut, enim consectetur nam atque modi officia maiores fugiat a.</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="accordion-header">
+                      <span class="steps-list__txt">Phoenix</span><i class="plus"></i>
+                    </div>
+                    <div class="accordion-body">
+                      <div class="bloom">
+                        <p class="bloom__txt">Расширение пространства</p>
+                        <ul class="bloom__list fx fx-wrap">
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/red-min.jpg' %}" alt="Цвет" title="красный"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/green-min.jpg' %}" alt="Цвет" title="зеленый"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/blue-min.jpg' %}" alt="Цвет" title="синий"></a></li>
+                        </ul>
+                      </div>
+                      <p class="details__link fx">
+                        <a href="#" class="fx align-center">Подробнее о материале
+                          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <path fill-rule="evenodd"
+                             d="M19.226,7.509 C19.226,7.615 19.183,7.711 19.113,7.780 C19.113,7.780 19.113,7.781 19.113,7.781 L12.201,14.687 C12.051,14.837 11.808,14.837 11.658,14.687 C11.584,14.612 11.546,14.514 11.546,14.416 C11.546,14.318 11.584,14.219 11.658,14.144 L17.915,7.893 L1.178,7.893 C0.966,7.893 0.794,7.721 0.794,7.509 C0.794,7.297 0.966,7.125 1.178,7.125 L17.915,7.125 L11.658,0.874 C11.509,0.724 11.509,0.481 11.658,0.331 C11.808,0.182 12.051,0.182 12.201,0.331 L19.112,7.237 C19.182,7.307 19.226,7.403 19.226,7.509 Z"/>
+                          </svg>
+                        </a>
+                      </p>
+                      <div class="material__text">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque necessitatibus, iste alias porro amet cum sit officia fugit eius. Eaque cumque ratione iste delectus, illum officia earum in consequuntur eveniet, voluptates, veniam eius atque tenetur fuga reprehenderit aperiam perspiciatis molestiae, qui! Neque alias atque amet pariatur facilis vero fugit architecto in itaque, consequatur quod perspiciatis, eius! Expedita ducimus quis ipsa, dolores iste, cupiditate labore doloremque animi voluptatum qui, dolor iusto ex quo sequi maxime necessitatibus ipsum repellat repellendus nobis corporis nulla officia. Impedit delectus magnam inventore deserunt asperiores blanditiis distinctio, ut, enim consectetur nam atque modi officia maiores fugiat a.</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="accordion-header">
+                      <span class="steps-list__txt">Cast glass</span><i class="plus"></i>
+                    </div>
+                    <div class="accordion-body">
+                      <div class="bloom">
+                        <p class="bloom__txt">Расширение пространства</p>
+                        <ul class="bloom__list fx fx-wrap">
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/red-min.jpg' %}" alt="Цвет" title="красный"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/green-min.jpg' %}" alt="Цвет" title="зеленый"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/blue-min.jpg' %}" alt="Цвет" title="синий"></a></li>
+                        </ul>
+                      </div>
+                      <p class="details__link fx">
+                        <a href="#" class="fx align-center">Подробнее о материале
+                          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <path fill-rule="evenodd"
+                             d="M19.226,7.509 C19.226,7.615 19.183,7.711 19.113,7.780 C19.113,7.780 19.113,7.781 19.113,7.781 L12.201,14.687 C12.051,14.837 11.808,14.837 11.658,14.687 C11.584,14.612 11.546,14.514 11.546,14.416 C11.546,14.318 11.584,14.219 11.658,14.144 L17.915,7.893 L1.178,7.893 C0.966,7.893 0.794,7.721 0.794,7.509 C0.794,7.297 0.966,7.125 1.178,7.125 L17.915,7.125 L11.658,0.874 C11.509,0.724 11.509,0.481 11.658,0.331 C11.808,0.182 12.051,0.182 12.201,0.331 L19.112,7.237 C19.182,7.307 19.226,7.403 19.226,7.509 Z"/>
+                          </svg>
+                        </a>
+                      </p>
+                      <div class="material__text">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque necessitatibus, iste alias porro amet cum sit officia fugit eius. Eaque cumque ratione iste delectus, illum officia earum in consequuntur eveniet, voluptates, veniam eius atque tenetur fuga reprehenderit aperiam perspiciatis molestiae, qui! Neque alias atque amet pariatur facilis vero fugit architecto in itaque, consequatur quod perspiciatis, eius! Expedita ducimus quis ipsa, dolores iste, cupiditate labore doloremque animi voluptatum qui, dolor iusto ex quo sequi maxime necessitatibus ipsum repellat repellendus nobis corporis nulla officia. Impedit delectus magnam inventore deserunt asperiores blanditiis distinctio, ut, enim consectetur nam atque modi officia maiores fugiat a.</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="accordion-header">
+                      <span class="steps-list__txt">Laminated</span><i class="plus"></i>
+                    </div>
+                    <div class="accordion-body">
+                      <div class="bloom">
+                        <p class="bloom__txt">Расширение пространства</p>
+                        <ul class="bloom__list fx fx-wrap">
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/red-min.jpg' %}" alt="Цвет" title="красный"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/green-min.jpg' %}" alt="Цвет" title="зеленый"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/blue-min.jpg' %}" alt="Цвет" title="синий"></a></li>
+                        </ul>
+                      </div>
+                      <p class="details__link fx">
+                        <a href="#" class="fx align-center">Подробнее о материале
+                          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <path fill-rule="evenodd"
+                             d="M19.226,7.509 C19.226,7.615 19.183,7.711 19.113,7.780 C19.113,7.780 19.113,7.781 19.113,7.781 L12.201,14.687 C12.051,14.837 11.808,14.837 11.658,14.687 C11.584,14.612 11.546,14.514 11.546,14.416 C11.546,14.318 11.584,14.219 11.658,14.144 L17.915,7.893 L1.178,7.893 C0.966,7.893 0.794,7.721 0.794,7.509 C0.794,7.297 0.966,7.125 1.178,7.125 L17.915,7.125 L11.658,0.874 C11.509,0.724 11.509,0.481 11.658,0.331 C11.808,0.182 12.051,0.182 12.201,0.331 L19.112,7.237 C19.182,7.307 19.226,7.403 19.226,7.509 Z"/>
+                          </svg>
+                        </a>
+                      </p>
+                      <div class="material__text">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque necessitatibus, iste alias porro amet cum sit officia fugit eius. Eaque cumque ratione iste delectus, illum officia earum in consequuntur eveniet, voluptates, veniam eius atque tenetur fuga reprehenderit aperiam perspiciatis molestiae, qui! Neque alias atque amet pariatur facilis vero fugit architecto in itaque, consequatur quod perspiciatis, eius! Expedita ducimus quis ipsa, dolores iste, cupiditate labore doloremque animi voluptatum qui, dolor iusto ex quo sequi maxime necessitatibus ipsum repellat repellendus nobis corporis nulla officia. Impedit delectus magnam inventore deserunt asperiores blanditiis distinctio, ut, enim consectetur nam atque modi officia maiores fugiat a.</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="accordion-header">
+                      <span class="steps-list__txt">Clear sight</span><i class="plus"></i>
+                    </div>
+                    <div class="accordion-body">
+                      <div class="bloom">
+                        <p class="bloom__txt">Расширение пространства</p>
+                        <ul class="bloom__list fx fx-wrap">
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/red-min.jpg' %}" alt="Цвет" title="красный"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/green-min.jpg' %}" alt="Цвет" title="зеленый"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/blue-min.jpg' %}" alt="Цвет" title="синий"></a></li>
+                        </ul>
+                      </div>
+                      <p class="details__link fx">
+                        <a href="#" class="fx align-center">Подробнее о материале
+                          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <path fill-rule="evenodd"
+                             d="M19.226,7.509 C19.226,7.615 19.183,7.711 19.113,7.780 C19.113,7.780 19.113,7.781 19.113,7.781 L12.201,14.687 C12.051,14.837 11.808,14.837 11.658,14.687 C11.584,14.612 11.546,14.514 11.546,14.416 C11.546,14.318 11.584,14.219 11.658,14.144 L17.915,7.893 L1.178,7.893 C0.966,7.893 0.794,7.721 0.794,7.509 C0.794,7.297 0.966,7.125 1.178,7.125 L17.915,7.125 L11.658,0.874 C11.509,0.724 11.509,0.481 11.658,0.331 C11.808,0.182 12.051,0.182 12.201,0.331 L19.112,7.237 C19.182,7.307 19.226,7.403 19.226,7.509 Z"/>
+                          </svg>
+                        </a>
+                      </p>
+                      <div class="material__text">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque necessitatibus, iste alias porro amet cum sit officia fugit eius. Eaque cumque ratione iste delectus, illum officia earum in consequuntur eveniet, voluptates, veniam eius atque tenetur fuga reprehenderit aperiam perspiciatis molestiae, qui! Neque alias atque amet pariatur facilis vero fugit architecto in itaque, consequatur quod perspiciatis, eius! Expedita ducimus quis ipsa, dolores iste, cupiditate labore doloremque animi voluptatum qui, dolor iusto ex quo sequi maxime necessitatibus ipsum repellat repellendus nobis corporis nulla officia. Impedit delectus magnam inventore deserunt asperiores blanditiis distinctio, ut, enim consectetur nam atque modi officia maiores fugiat a.</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="accordion-header">
+                      <span class="steps-list__txt">Lux Clear</span><i class="plus"></i>
+                    </div>
+                    <div class="accordion-body">
+                      <div class="bloom">
+                        <p class="bloom__txt">Расширение пространства</p>
+                        <ul class="bloom__list fx fx-wrap">
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/red-min.jpg' %}" alt="Цвет" title="красный"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/green-min.jpg' %}" alt="Цвет" title="зеленый"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/blue-min.jpg' %}" alt="Цвет" title="синий"></a></li>
                         </ul>
                       </div>
                       <p class="details__link fx">
@@ -722,6 +744,7 @@
               <!-- Image -->
 
               <div class="steps__image" style="background: url({% static 'img/steps/4.jpg' %}) center/cover no-repeat;">
+
                 <div class="material">
                   <button class="material__close"></button>
                   <h2><span class="underlined">О материале</span></h2>
@@ -736,17 +759,21 @@
                   <div class="swiper-container1 sw">
                     <div class="swiper-wrapper">
                       <div class="swiper-slide tabs__name">Lacobel</div>
-                      <div class="swiper-slide tabs__name">Matelac</div>
-                      <div class="swiper-slide tabs__name">MNGE</div>
                       <div class="swiper-slide tabs__name">Planibel</div>
-                      <div class="swiper-slide tabs__name">laconat</div>
-                      <div class="swiper-slide tabs__name">mirox</div>
+                      <div class="swiper-slide tabs__name">Matelac</div>
+                      <div class="swiper-slide tabs__name">Matelux</div>
+                      <div class="swiper-slide tabs__name">Mirox</div>
+                      <div class="swiper-slide tabs__name">Phoenix</div>
+                      <div class="swiper-slide tabs__name">Cast Glass</div>
+                      <div class="swiper-slide tabs__name">Laminated</div>
+                      <div class="swiper-slide tabs__name">Clear Sight</div>
+                      <div class="swiper-slide tabs__name">Lux Clear</div>
                     </div>
                     <div class="swiper-pagination"></div>
                     <div class="swiper-scrollbar"></div>
-                  </div>  
+                  </div>
                   <div class="tabs__content">
-                    
+
                     <!-- Item -->
 
                     <div class="tabs__item">
@@ -754,17 +781,9 @@
                       <div class="bloom">
                         <p class="bloom__txt">Расширение пространства</p>
                         <ul class="bloom__list fx fx-wrap">
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/red-min.jpg' %}" alt="Цвет" title="красный"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/green-min.jpg' %}" alt="Цвет" title="зеленый"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/blue-min.jpg' %}" alt="Цвет" title="синий"></a></li>
                         </ul>
                       </div>
                       <p class="details__link fx">
@@ -787,17 +806,9 @@
                       <div class="bloom">
                         <p class="bloom__txt">Расширение пространства</p>
                         <ul class="bloom__list fx fx-wrap">
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/red-min.jpg' %}" alt="Цвет" title="красный"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/green-min.jpg' %}" alt="Цвет" title="зеленый"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/blue-min.jpg' %}" alt="Цвет" title="синий"></a></li>
                         </ul>
                       </div>
                       <p class="details__link fx">
@@ -819,17 +830,9 @@
                       <div class="bloom">
                         <p class="bloom__txt">Расширение пространства</p>
                         <ul class="bloom__list fx fx-wrap">
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/red-min.jpg' %}" alt="Цвет" title="красный"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/green-min.jpg' %}" alt="Цвет" title="зеленый"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/blue-min.jpg' %}" alt="Цвет" title="синий"></a></li>
                         </ul>
                       </div>
                       <p class="details__link fx">
@@ -852,17 +855,9 @@
                       <div class="bloom">
                         <p class="bloom__txt">Расширение пространства</p>
                         <ul class="bloom__list fx fx-wrap">
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/red-min.jpg' %}" alt="Цвет" title="красный"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/green-min.jpg' %}" alt="Цвет" title="зеленый"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/blue-min.jpg' %}" alt="Цвет" title="синий"></a></li>
                         </ul>
                       </div>
                       <p class="details__link fx">
@@ -885,17 +880,9 @@
                       <div class="bloom">
                         <p class="bloom__txt">Расширение пространства</p>
                         <ul class="bloom__list fx fx-wrap">
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/red-min.jpg' %}" alt="Цвет" title="красный"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/green-min.jpg' %}" alt="Цвет" title="зеленый"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/blue-min.jpg' %}" alt="Цвет" title="синий"></a></li>
                         </ul>
                       </div>
                       <p class="details__link fx">
@@ -918,17 +905,9 @@
                       <div class="bloom">
                         <p class="bloom__txt">Расширение пространства</p>
                         <ul class="bloom__list fx fx-wrap">
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
-                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/bloom/1.png' %}" alt="Цвет" title="Название цвета"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/red-min.jpg' %}" alt="Цвет" title="красный"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/green-min.jpg' %}" alt="Цвет" title="зеленый"></a></li>
+                          <li class="bloom__item"><a href="#" class="bloom__link"><img src="{% static 'img/zones/blue-min.jpg' %}" alt="Цвет" title="синий"></a></li>
                         </ul>
                       </div>
                       <p class="details__link fx">
@@ -968,30 +947,36 @@
 
           <div class="steps__item steps__item_5" style="display: none;">
             <div class="container">
-              
+
               <!-- Box -->
 
-{#              <div class="steps__box">#}
-{#                <h2>Чтобы получить <span class="underlined">расчет стоимости,</span> заполните поля ниже</h2>#}
-{#                <form class="steps__form form" method="POST">#}
-{#                    {% form.hidden_tag() %}#}
-{#                  <label class="form__field">{% form.name(placeholder="Ваше имя") %}</label>#}
-{#                  <label class="form__field">{% form.phonenumber(placeholder="Ваш телефон", class="phone-mask") %}</label>#}
-{#                  <label class="form__field">{% form.email(placeholder="Ваш email") %}</label>#}
-{#                  <div class="check fx align-center">#}
-{#                    <label class="check__item fx">#}
-{#                      {% form.success_checkbox(checked=True) %}#}
-{#                      <span class="check__mark"></span>#}
-{#                    </label>#}
-{#                    <p class="check__txt">Даю согласие на <a href="#">обработку персональных данных</a> и согласен(а) с <a href="#">Политикой конфиденциальности*</a>.</p>#}
-{#                  </div>#}
-{#                  {% form.submit(class="btn form__btn") %}#}
-{#                </form>#}
-{#              </div>#}
-              
+              <div class="steps__box">
+                <h2>Чтобы получить <span class="underlined">расчет стоимости,</span> заполните поля ниже</h2>
+                <form action="{% url 'agc-order' %}" method="post" class="steps__form form">
+                  <label class="form__field">{{ order_form.first_name }}</label>
+                  <label class="form__field">{{ order_form.phone_number }}</label>
+                  <label class="form__field">{{ order_form.email }}</label>
+                  {{ order_form.zone_name }}
+                  {{ order_form.items }}
+                  {{ order_form.glass_color }}
+                  {{ order_form.glass_name }}
+                    {% csrf_token %}
+                  <div class="fx align-center">
+                  <label class="check__item fx">
+                      {{ order_form.check }}
+                  </label>
+                    <p class="check__txt">Даю согласие на <a class="privacy" href="#">обработку персональных данных</a> и согласен(а) с <a class="privacy" href="#">Политикой конфиденциальности*</a>.</p>
+                  </div>
+                  <div class="agreement-check fx align-center">
+                    <p>Необходимо ваше согласие</p>
+                  </div>
+                  <button class="btn form__btn">Рассчитать стоимость</button>
+                </form>
+              </div>
+
               <!-- Image -->
 
-              <div class="steps__image steps__image__small" style="background: url({% static 'img/steps/5.jpg' %}) center/cover no-repeat;"></div>
+              <div class="steps__image steps__image__small"></div>
 
             </div>
           </div>
@@ -1005,9 +990,9 @@
 
     <section class="about" id="about">
       <div class="container">
-        
+
         <!-- Title -->
-        
+
         <div class="title">
           <h2 class="title__h2"><span class="underlined">О проекте</span> Interior Solutions</h2>
         </div>
@@ -1020,7 +1005,7 @@
         </div>
 
         <!-- Img -->
-        
+
         <div class="about__img"><img src="{% static 'img/other/about.jpg' %}" alt="Фото"></div>
 
       </div>
@@ -1030,7 +1015,7 @@
 
     <div class="info" id="info">
       <div class="row fx fx-wrap">
-        
+
         <!-- Col -->
 
         <div class="col-6">
@@ -1071,13 +1056,13 @@
 
     <section class="contact" id="contact">
       <div class="container text-center">
-        
+
         <!-- Title -->
-        
+
         <div class="title">
           <h2 class="title__h2"><span class="underlined">Свяжитесь с нами</span></h2>
         </div>
-        
+
         <!-- Btn -->
 
         <div class="contact__btn open-modal"><a href="#" class="btn">Написать</a></div>
@@ -1085,92 +1070,30 @@
       </div>
     </section>
 
-    <!-- Footer -->
+   {% endblock %}
 
-    <footer class="footer">
-      <div class="container">
+   {% block additional_js %}
+       <script>
+       $('.bloom__link').on('click', function (event){
+            event.preventDefault();
 
-        <!-- Logo -->
-
-        <div class="footer__logo fx fx-center">
-          <a href="index.html" class="fx"><img src="{% static 'img/logo.png' %}" alt="AGC"></a>
-        </div>
-
-        <!-- Body -->
-
-        <div class="footer__body fx fx-between align-center">
-          <span class="copyright">© 2019, Interior Solution</span>
-          <p class="footer__politics"><a href="#">Политика конфиденциальности</a></p>
-          <div class="dev fx align-center">
-            <span class="dev__txt">Разработано:</span>
-            <a href="#"><img src="{% static 'img/other/dev.png' %}" alt="Логотип"></a>
-          </div>
-        </div>
-        
-      </div>
-    </footer>
-
-  </div>
-
-  <!-- Modal -->
-
-  <div class="modal modal_request">
-    <div class="modal__box">
-      <div class="modal__header">
-        <h2>Оставить заявку</h2>
-        <button class="modal__close"></button>
-      </div>
-      <div class="modal__body">
-        <form class="modal__form form" method="POST">
-            {% csrf_token %}
-              <label class="form__field">{{ contact_form.first_name }}</label>
-                <label class="form__field">{{ contact_form.phone_number }}</label>
-                <label class="form__field">{{ contact_form.email }}</label>
-                <div class="fx align-center">
-                  <label class="check__item fx">
-                      {{ contact_form.check }}
-{#                    <input  type="checkbox" name="check" checked="checked" required>#}
-                    {#<span class="check__mark"></span>#}
-                  </label>
-              <p class="check__txt">Даю согласие на <a href="#">обработку персональных данных</a> и согласен(а) с <a href="#">Политикой конфиденциальности*</a>.</p>
-            </div>
-                <button class="btn btn__main form__btn"><span>Отправить</span></button>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!--[if lt IE 9]>
-  <script src="{% static 'libs/html5shiv/es5-shim.min.js' %}"></script>
-  <script src="{% static 'libs/html5shiv/html5shiv.min.js' %}"></script>
-  <script src="{% static 'libs/html5shiv/html5shiv-printshiv.min.js' %}"></script>
-  <script src="{% static 'libs/respond/respond.min.js' %}"></script>
-  <![endif]-->
-
-  <script src="{% static 'libs/jquery/jquery-3.4.0.min.js' %}"></script>
-  <script src="{% static 'libs/maskedinput/jquery.maskedinput.min.js' %}"></script>
-  <script src="{% static 'libs/swiper/swiper.min.js' %}"></script>
-  <script src="{% static 'js/main.js' %}"></script>
-    <script>
-        var step = 1;
-
-        $('.steps__head .number .active').text(step);
-        $('.steps__head .indicators .indicators__item:lt('+(step-1)+')').addClass('ready');
-        $('.steps__head .indicators .indicators__item:eq('+(step-1)+')').addClass('active');
-
-        $( ".steps-nav__item" ).click(function() {
-            step += 1;
-            activate_next_step(step);
+            $(this).toggleClass('active');
+            let color = $(this).find('img').attr('title');
+            switch(color){
+              case 'красный':
+                $('.steps__image').css('background', 'url(static/img/zones/red.jpg) center top / cover no-repeat #fff');
+                $('.tabs__img').css('background', 'url(static/img/zones/red.jpg) center top / cover no-repeat #fff');
+              break
+              case 'зеленый':
+                $('.steps__image').css('background', 'url(static/img/zones/green.jpg) center top / cover no-repeat #fff');
+                $('.tabs__img').css('background', 'url(static/img/zones/green.jpg) center top / cover no-repeat #fff');
+              break
+              case 'синий':
+                $('.steps__image').css('background', 'url(static/img/zones/blue.jpg) center top / cover no-repeat #fff');
+                $('.tabs__img').css('background', 'url(static/img/zones/blue.jpg) center top / cover no-repeat #fff');
+              break
+            }
+            $('a#next_step').css('display', 'block');
         });
-
-        function activate_next_step(cur_step){
-            $('.steps__head .number .active').text(cur_step);
-            $('.steps__head .indicators .indicators__item:lt('+(cur_step-1)+')').removeClass('active').addClass('ready');
-            $('.steps__head .indicators .indicators__item:eq('+(cur_step-1)+')').addClass('active');
-        //some code
-        }
-    </script>
-  <!-- Yandex.Metrika counter --><!-- /Yandex.Metrika counter -->
-  <!-- Google Analytics counter --><!-- /Google Analytics counter -->
-</body>
-</html>
+       </script>
+   {% endblock %}
