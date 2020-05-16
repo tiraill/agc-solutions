@@ -30,6 +30,7 @@ class GlassElementImage(SaveModelImageMixin, models.Model):
 
     uid = models.UUIDField(default=uuid.uuid4, primary_key=True)
     title = models.CharField(max_length=250, verbose_name="Наименование цвета стекла")
+    color_slug = models.SlugField(max_length=350, blank=True)
     image = models.ImageField(null=True, verbose_name="Файл с картинкой большого размера")
     sm_image = models.ImageField(null=True, verbose_name="Файл с картинкой малого размера")
     priority = models.IntegerField(default=1, verbose_name="Приоритет вывода картинки")

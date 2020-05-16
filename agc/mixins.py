@@ -2,8 +2,9 @@ import sys
 import logging
 
 from PIL import Image
+from uuid import uuid4
 from io import BytesIO
-from uuslug import uuslug
+from uuslug import uuslug,  slugify
 
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.conf import settings
@@ -31,13 +32,9 @@ class SaveModelImageMixin:
         return output_io_stream
 
     def save(self, *args, **kwargs):
+        if not self.color_slug:
+            self.color_slug = slugify(f"{self.title}-{self.element.title}-{uuid4()}")
         try:
-            # temporary_image = Image.open(self.image)
-            # output_io_stream = BytesIO()
-            # temporary_image = temporary_image.convert("RGB")
-            # temporary_image.thumbnail(settings.IMAGE_THUMBNAIL_SIZE, Image.ANTIALIAS)
-            # temporary_image.save(output_io_stream, format='JPEG', quality=85)
-            # output_io_stream.seek(0)
             normal_sized_output_io_stream = self.image_stream(self.image, settings.IMAGE_THUMBNAIL_SIZE)
             sm_sized_output_io_stream = self.image_stream(self.image, settings.SM_IMAGE_THUMBNAIL_SIZE)
             self.image = InMemoryUploadedFile(normal_sized_output_io_stream, 'image',

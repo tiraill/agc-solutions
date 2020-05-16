@@ -12,15 +12,19 @@ from agc.forms import FeedbackForm, OrderForm
 log = logging.getLogger(__name__)
 
 
-def index(request):
+def get_context():
     glass_elements = GlassElement.objects.all()
     possible_colors = GlassElementImage.objects.all()
-    ctx = {
+    return {
         'glass_elements': glass_elements,
         'possible_colors': possible_colors,
         'contact_form': FeedbackForm(),
         'order_form': OrderForm()
     }
+
+
+def index(request):
+    ctx = get_context()
     if request.method == 'POST':
         form = FeedbackForm(request.POST)
         if form.is_valid():
@@ -40,15 +44,11 @@ def order(request):
             form.save()
             send_new_feedback_email(form, order_req=True)
             return HttpResponseRedirect(reverse('agc-index'))
-        glass_elements = GlassElement.objects.all()
-        possible_colors = GlassElementImage.objects.all()
-        ctx = {
-            'glass_elements': glass_elements,
-            'possible_colors': possible_colors,
-            'contact_form': FeedbackForm(),
+        ctx = get_context()
+        ctx.update({
             'order_form': form,
             'error': 'true'
-        }
+        })
         return render(request, 'index.html', context=ctx)
     raise Http404()
 

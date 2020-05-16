@@ -335,7 +335,10 @@ $(document).ready(function () {
     }
     else if(quiz_step == 3){
       $('.bloom__link.active').each(function(){ 
-        $('form.steps__form').find('input[type="hidden"]')[2].value += ($(this)[0].firstChild.title + ';\n');
+        let element = $(this)[0].firstChild;
+        let manufacturer = ($(element).data('manufacturer'));
+        let glass_color = element.title;
+        $('form.steps__form').find('input[type="hidden"]')[2].value += (manufacturer +' '+ glass_color + ';\n');
       });
       if ($(window).width() > '992'){
         $('.accordion.accordion_indent').find('li.active').each(function(value, element){

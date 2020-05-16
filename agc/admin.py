@@ -28,7 +28,8 @@ class GlassElementImageAdmin(admin.ModelAdmin):
     list_filter = ('element__title',)
     search_fields = ('element__title',)
     autocomplete_fields = ('element',)
-    exclude = ('uid', 'sm_image')
+    readonly_fields = ('uid', 'color_slug')
+    exclude = ('sm_image', )
 
     def get_glass_element(self, instance):
         if instance and instance.element:
