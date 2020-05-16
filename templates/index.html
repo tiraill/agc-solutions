@@ -324,7 +324,7 @@
                             <p class="bloom__txt">Расширение пространства</p>
                             <ul class="bloom__list fx fx-wrap">
                                 {% for small_image in element.images.all %}
-                              <li class="bloom__item"><a href="#" class="bloom__link"><img src="{{ small_image.sm_image.url }}" alt="Цвет" title="{{ small_image.title }}" data-manufacturer="{{ element.title }}"></a></li>
+                              <li class="bloom__item"><a href="#" class="bloom__link"><img src="{{ small_image.sm_image.url }}" alt="Цвет" title="{{ small_image.title }}" data-manufacturer="{{ element.title }}" data-colorslug="{{ small_image.color_slug }}"></a></li>
                                 {%  endfor %}
                             </ul>
                           </div>
@@ -383,7 +383,7 @@
                         <p class="bloom__txt">Расширение пространства</p>
                         <ul class="bloom__list fx fx-wrap">
                             {% for small_image in element.images.all %}
-                                <li class="bloom__item"><a href="#" class="bloom__link"><img src="{{ small_image.sm_image.url }}" alt="Цвет" title="{{ small_image.title }}"></a></li>
+                                <li class="bloom__item"><a href="#" class="bloom__link"><img src="{{ small_image.sm_image.url }}" alt="Цвет" title="{{ small_image.title }}" data-manufacturer="{{ element.title }}" data-colorslug="{{ small_image.color_slug }}"></a></li>
                             {% endfor %}
                         </ul>
                       </div>
@@ -547,7 +547,7 @@
        $('.bloom__link').on('click', function (event){
             event.preventDefault();
             $(this).toggleClass('active');
-            let color = $(this).find('img').attr('title');
+            let color = $(this).find('img').data('colorslug');
             switch(color){
               {% for element in possible_colors %}
                   case '{{element.color_slug}}':
