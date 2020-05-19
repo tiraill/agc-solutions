@@ -285,10 +285,9 @@ body {
   padding-top: 75px;
 }
 
-.steps__item_3 .alt-row:after {
-  content: "";
-  display: table;
-  clear: both;
+.steps__item_3 .alt-row{
+  display: flex;
+  justify-content: space-between;
 }
 .steps__wrap {
   width: 290px;
@@ -345,13 +344,13 @@ body {
 
 .steps__dot.active {
   border: 6px solid #d2f6f6;
-  box-shadow: 0px 0px 8px #fff;
+  box-shadow: 0px 0px 8px #ffffff;
 }
 
 .steps__dot:hover {
   cursor: pointer;
   border: 6px solid #d2f6f6;
-  box-shadow: 0px 0px 8px #fff;
+  box-shadow: 0px 0px 8px #ffffff;
 }
 
 .steps__kitchen #fasade {
